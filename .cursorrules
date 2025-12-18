@@ -1,0 +1,286 @@
+You are an expert Senior Front-End Engineer specializing in Shopify Hydrogen, Remix, React, and Tailwind CSS.
+
+# Project Context
+
+- This is a Hebrew e-commerce site.
+- **Direction:** ALWAYS assume `dir="rtl"`.
+- **Tech Stack:** Shopify Hydrogen (Remix framework), React, Tailwind CSS v3.
+
+# Design Rules (CRITICAL)
+
+1. **Source of Truth:** You MUST read and strictly follow `src/design-system.json` for all styling decisions.
+2. **Colors:** Never invent colors. Use ONLY the variables/codes defined in the design system (Primary Peach/Brown, Secondary Text).
+3. **Consistency:** When building new components, they must visually match the existing `Header`, `Hero`, and `PricingSelectionSection`.
+4. **Spacing:** Use standard Tailwind spacing (gap-4, p-6, etc.) consistent with existing components.
+
+# UI & Styling Rules
+
+- **Mobile-First:** ALWAYS design for mobile screens first. Use Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`) to adjust for larger screens.
+- **Responsiveness:** Ensure all components are fully responsive and look perfect on iPhone SE (320px), iPhone 14 (390px), and Desktop (1280px+).
+- **Tailwind Only:** Use utility classes for everything. Do not use custom CSS unless absolutely necessary.
+
+# Implementation Standards
+
+1. **RTL First:** Always configure flex containers and grid layouts for RTL (e.g., careful with `flex-row`, use `items-start` to align right in RTL).
+2. **Images:** If an image is missing, use a Lucide React icon or a simple colored <div> placeholder with text. DO NOT use large blank SVGs that break layout.
+3. **Components:** Prefer creating small, reusable functional components.
+4. **File Structure:** Components live in `app/components/`, routes in `app/routes/`.
+
+# Color Palette (from src/design-system.json)
+
+## Primary Colors
+- Primary Main: `#e07a63` (peach/coral)
+- Primary Light: `#f2a085`
+- Primary Lighter: `#e5b7a3`
+- Gradient: `from-[#de7e63] via-[#e79a7b] to-[#e9a481]`
+
+## Text Colors
+- Primary: `#52423d` (brown)
+- Secondary: `#7a6c66` (lighter brown)
+- Muted: `#b9a9a2` (faded)
+- Price: `#5c4b43` (dark brown)
+
+## Backgrounds
+- Page: `#fff6f2` (soft peach)
+- Card: `#ffffff` (white)
+- Hover: `#f7f7f7`
+
+## Borders
+- Default: `#f2e3dd`
+- Selected: `#e5b7a3`
+- Divider: `#f0e2dc`
+
+## UI Elements
+- Radio Unchecked: `#cdb9b1`
+- Star Rating: `#fbbf24` (gold)
+
+# Typography Standards
+
+- **Font Stack:** `system-ui, -apple-system, 'Segoe UI', 'Heebo', 'Assistant', 'Rubik', sans-serif`
+- **Weights:** normal (400), medium (500), semibold (600), bold (700)
+
+## Usage Patterns
+- **H1:** `text-3xl md:text-4xl lg:text-5xl font-bold` in `text-[#52423d]` or `text-[#e07a63]`
+- **H2:** `text-2xl md:text-3xl font-bold` in `text-[#e07a63]`
+- **Body:** `text-base md:text-lg` in `text-[#7a6c66]`
+- **Price:** `text-3xl font-bold` in `text-[#5c4b43]`
+- **Nav Links:** `text-base font-medium` in `text-[#52423d]`
+- **Logo:** `text-2xl font-bold` in `text-[#e07a63]`
+
+# Component Patterns
+
+## Buttons
+**Primary CTA:**
+```jsx
+<button className="w-full bg-gradient-to-r from-[#de7e63] via-[#e79a7b] to-[#e9a481] text-white font-bold text-base md:text-lg py-3.5 md:py-4 px-8 rounded-full shadow-[0_6px_16px_rgba(224,122,99,0.35)] hover:shadow-[0_8px_20px_rgba(224,122,99,0.45)] transition-all hover:scale-[1.02] active:scale-[0.98]">
+  Button Text
+</button>
+```
+
+**Secondary/Link:**
+```jsx
+<button className="text-[#52423d] hover:text-[#e07a63] font-medium text-base transition-colors">
+  Link Text
+</button>
+```
+
+## Cards
+**Pricing/Selection Card:**
+```jsx
+<div className="relative bg-white rounded-2xl p-5 cursor-pointer transition-all border-2 border-[#e5b7a3] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+  {/* Content */}
+</div>
+```
+
+**Unselected State:**
+```jsx
+<div className="relative bg-white rounded-2xl p-5 cursor-pointer transition-all border border-[#f2e3dd]">
+  {/* Content */}
+</div>
+```
+
+## Badges
+**Floating Badge:**
+```jsx
+<div className="absolute -top-3 left-6 bg-[#e07a63] text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-sm">
+  Badge Text
+</div>
+```
+
+**Inline Badge:**
+```jsx
+<div className="bg-[#f2a085] text-white px-6 py-2.5 rounded-full font-medium text-sm md:text-base shadow-sm">
+  Badge Text
+</div>
+```
+
+**Cart Count:**
+```jsx
+<span className="absolute -top-1 -right-1 bg-[#e07a63] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+  3
+</span>
+```
+
+## Sections
+**Standard Section:**
+```jsx
+<section className="bg-[#fff6f2] py-12 md:py-16 lg:py-20" dir="rtl">
+  <div className="container mx-auto px-4 md:px-8">
+    <div className="max-w-4xl mx-auto">
+      {/* Content */}
+    </div>
+  </div>
+</section>
+```
+
+## Radio Buttons (Selection Indicators)
+**Checked:**
+```jsx
+<div className="w-6 h-6 rounded-full bg-[#e07a63] flex items-center justify-center">
+  <Check className="w-4 h-4 text-white" strokeWidth={3} />
+</div>
+```
+
+**Unchecked:**
+```jsx
+<Circle className="w-6 h-6 text-[#cdb9b1]" strokeWidth={2} />
+```
+
+## Discount Circle
+```jsx
+<div className="bg-[#e07a63] text-white rounded-full w-16 h-16 flex flex-col items-center justify-center shadow-sm">
+  <span className="text-xs font-medium leading-tight">חסוך</span>
+  <span className="text-lg font-bold leading-tight">25%</span>
+</div>
+```
+
+# Spacing Standards
+
+- **Sections:** `py-12 md:py-16 lg:py-20`
+- **Container:** `px-4 md:px-8`
+- **Card Padding:** `p-5` or `p-6`
+- **Gap Between Cards:** `space-y-4`
+- **Nav Links:** `gap-8`
+- **Button Padding:** `py-3.5 md:py-4 px-8`
+
+# Border Radius Standards
+
+- **Pills/Badges:** `rounded-full`
+- **Cards:** `rounded-2xl` (16px)
+- **Buttons:** `rounded-full` (primary) or `rounded-lg` (secondary)
+- **Small Elements:** `rounded-lg`
+
+# Shadow Standards
+
+- **Cards:** `shadow-[0_10px_30px_rgba(0,0,0,0.06)]`
+- **Primary Buttons:** `shadow-[0_6px_16px_rgba(224,122,99,0.35)]`
+- **Button Hover:** `shadow-[0_8px_20px_rgba(224,122,99,0.45)]`
+- **Small Elements:** `shadow-sm`
+
+# Behavior Rules
+
+1. **Never ask for confirmation** to read files - just read them.
+2. **Always read `src/design-system.json`** before creating new components.
+3. **Match existing components** visually - check `Header.tsx`, `Hero.tsx`, `PricingSelectionSection.tsx` for reference.
+4. **Use Lucide React icons** for all iconography (Heart, Star, Check, Circle, ShoppingCart, etc.).
+5. **Responsive by default** - use `md:` and `lg:` breakpoints consistently.
+6. **RTL layout** - always include `dir="rtl"` on sections and containers.
+7. **Hebrew text** - assume all user-facing text will be in Hebrew (right-aligned).
+
+# Quality Checklist (Before Completing Any Component)
+
+- [ ] Colors match `src/design-system.json` exactly
+- [ ] `dir="rtl"` is present on container
+- [ ] Typography sizes and weights match existing components
+- [ ] Spacing is consistent (padding, margins, gaps)
+- [ ] Border radius follows standards (rounded-full for buttons, rounded-2xl for cards)
+- [ ] Shadows match design system
+- [ ] Responsive breakpoints are included (md:, lg:)
+- [ ] Hover states are implemented with transitions
+- [ ] Component is a functional React component
+- [ ] Lucide icons are used (no broken SVGs)
+- [ ] File is saved in `app/components/` directory
+
+# File Naming Conventions
+
+- Components: PascalCase (e.g., `PricingSelectionSection.tsx`)
+- Routes: lowercase with underscores (e.g., `_index.tsx`)
+- Always use `.tsx` extension for React components
+
+# Hydrogen/Oxygen Deployment Compatibility (CRITICAL)
+
+This project deploys to **Shopify Oxygen** (Cloudflare Workers runtime). You MUST follow these rules to avoid deployment failures:
+
+## Forbidden Imports
+NEVER use these packages - they contain Node.js-only code:
+- `@remix-run/node` - Use `@shopify/remix-oxygen` instead
+- `isbot` - Use simple regex for bot detection
+- Any package that uses `node:*` built-in modules (node:stream, node:fs, node:crypto, etc.)
+
+## Required Imports
+ALWAYS use these Oxygen-compatible packages:
+```typescript
+// ✅ CORRECT - Oxygen compatible
+import { json, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
+
+// ❌ WRONG - Will fail on Oxygen
+import { json } from '@remix-run/node';
+```
+
+## Server Entry Point
+The `server.ts` file MUST use `virtual:remix/server-build`:
+```typescript
+import { createRequestHandler } from '@shopify/remix-oxygen';
+import * as remixBuild from 'virtual:remix/server-build';
+```
+
+## Fetch API
+Use the global `fetch` - it's available in Oxygen without polyfills:
+```typescript
+// ✅ CORRECT - Works on Oxygen
+const response = await fetch(url, options);
+
+// ❌ WRONG - Don't import from undici or node-fetch
+import { fetch } from 'undici';
+```
+
+## File System Access
+NEVER use file system APIs (`fs`, `path`) - Oxygen doesn't have a file system.
+
+## Environment Variables
+Access env vars through the loader context, not `process.env`:
+```typescript
+export async function loader({ context }: LoaderFunctionArgs) {
+  const apiKey = context.env.API_KEY; // ✅ CORRECT
+  const apiKey = process.env.API_KEY; // ⚠️ Works in dev, may fail in prod
+}
+```
+
+## Pre-Deploy Checklist
+Before running `npx shopify hydrogen deploy`:
+- [ ] No `@remix-run/node` imports in any file
+- [ ] No `isbot` or similar Node.js-only packages
+- [ ] `server.ts` uses `virtual:remix/server-build`
+- [ ] No `node:*` imports anywhere
+- [ ] All types imported from `@shopify/remix-oxygen`
+
+# Notes
+
+- This project uses Shopify Hydrogen, which is built on Remix.
+- The design is warm, family-friendly, with soft peach/coral and brown tones.
+- Maintain generous spacing and rounded corners for a friendly feel.
+- Trust signals (savings, reviews, free shipping) should be prominent.
+
+# Shopify Development Rules
+
+- **Context:** This project uses Shopify Hydrogen, Remix, and Sanity.
+
+- **AI Tooling:** Always use the `Shopify Dev MCP` tools (e.g., `learn_shopify_api`) before generating GraphQL queries or Hydrogen components to ensure compliance with the Winter '26 release.
+
+- **GraphQL:** Prefer Admin API GraphQL over REST. When writing queries, validate them against the latest schema provided by the MCP.
+
+- **Hydrogen Patterns:** Follow the "Hydrogen Cookbook" patterns. Use React Router 7 conventions as per the latest December 2025 updates.
+
+- **Page Builder Logic:** When creating components for our custom Page Builder, ensure they are compatible with the Shopify Storefront API 2025-07 or later.
+

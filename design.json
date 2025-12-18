@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "description": "High-level visual direction extracted from the provided landing/checkout screenshots. Use this as the creative brief to reproduce the look and feel across the app.",
+    "tone": "Warm, reassuring, family-friendly commerce with soft contrasts and generous breathing room.",
+    "language_direction": "rtl-first (Hebrew in captures); ensure all layouts support RTL and LTR."
+  },
+  "layout": {
+    "page": {
+      "background": "#fff6f2",
+      "max_content_width": 1120,
+      "horizontal_padding": 32,
+      "vertical_spacing": 56,
+      "section_spacing": 72,
+      "alignment": "centered column with card sections separated by whitespace"
+    },
+    "cards": {
+      "background": "#ffffff",
+      "border_radius": 16,
+      "shadow": "0 10px 30px rgba(0,0,0,0.06)",
+      "border": "1px solid #f2e3dd",
+      "padding": 20,
+      "gap": 12
+    },
+    "grid": {
+      "columns": 4,
+      "gap": 24,
+      "card_alignment": "center"
+    }
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 20,
+    "xl": 32,
+    "xxl": 48,
+    "button_horizontal": 28,
+    "button_vertical": 12,
+    "card_padding": 20,
+    "section_padding": 56
+  },
+  "typography": {
+    "primary_font": "Heebo, 'Assistant', 'Rubik', sans-serif",
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "sizes": {
+      "xs": 12,
+      "sm": 14,
+      "md": 16,
+      "lg": 18,
+      "xl": 22,
+      "xxl": 28,
+      "display": 34
+    },
+    "line_heights": {
+      "tight": 1.2,
+      "base": 1.4,
+      "relaxed": 1.6
+    },
+    "color": "#52423d",
+    "emphasis_color": "#e07a63",
+    "number_color": "#55504b",
+    "price_color": "#5c4b43"
+  },
+  "colors": {
+    "background": "#fff6f2",
+    "surface": "#ffffff",
+    "surface_alt": "#fff3ed",
+    "primary": "#e07a63",
+    "primary_dark": "#c45f4c",
+    "accent": "#f2a085",
+    "text_primary": "#52423d",
+    "text_secondary": "#7a6c66",
+    "muted": "#b9a9a2",
+    "success": "#66c27a",
+    "danger": "#e07a63",
+    "divider": "#f0e2dc",
+    "tag": "#fce9de",
+    "warning_badge": "#fce9de"
+  },
+  "gradients": {
+    "warm_horizontal": "linear-gradient(90deg, #de7e63 0%, #e79a7b 50%, #e9a481 100%)",
+    "warm_diagonal": "linear-gradient(120deg, #e1876c 0%, #eba487 100%)"
+  },
+  "radii": {
+    "pill": 999,
+    "rounded": 12,
+    "card": 16
+  },
+  "shadows": {
+    "card": "0 10px 30px rgba(0,0,0,0.06)",
+    "button": "0 6px 16px rgba(224,122,99,0.35)"
+  },
+  "icons": {
+    "style": "Line icons with soft fills and rounded strokes; use simple pictograms for features (grid, heart, sparkles, shield).",
+    "color": "#d5ab9a",
+    "size": 32
+  },
+  "controls": {
+    "radio": {
+      "shape": "circular",
+      "size": 18,
+      "checked_fill": "#e07a63",
+      "unchecked_border": "#cdb9b1",
+      "label_gap": 10
+    },
+    "badge": {
+      "background": "#fce9de",
+      "text_color": "#c45f4c",
+      "border_radius": 12,
+      "padding": {
+        "horizontal": 10,
+        "vertical": 6
+      }
+    }
+  },
+  "components": {
+    "navbar": {
+      "style": "Not shown; expect minimalist, no borders, aligned to center or right for RTL."
+    },
+    "section_header": {
+      "title_size": "xxl",
+      "title_weight": "bold",
+      "subtitle_size": "md",
+      "subtitle_color": "text_secondary",
+      "alignment": "center",
+      "spacing_below": 28
+    },
+    "pricing_card": {
+      "container": "card",
+      "layout": "horizontal price on right (RTL) with details left; badge overlay near top-left.",
+      "price_size": "xxl",
+      "price_weight": "bold",
+      "price_color": "price_color",
+      "original_price": {
+        "size": "sm",
+        "color": "muted",
+        "decoration": "line-through"
+      },
+      "savings": {
+        "size": "sm",
+        "color": "primary",
+        "description_size": "xs",
+        "description_color": "text_secondary"
+      },
+      "cta_state": "Select via radio; full card highlights on selection with subtle shadow tint."
+    },
+    "bundle_selector": {
+      "cards": "stacked vertically with consistent width and ample spacing",
+      "selected_state": {
+        "border": "1px solid #e5b7a3",
+        "shadow": "card",
+        "indicator": "filled radio on left"
+      },
+      "unselected_state": {
+        "border": "1px solid transparent",
+        "shadow": "none",
+        "indicator": "hollow radio"
+      }
+    },
+    "button_primary": {
+      "background": "warm_horizontal gradient",
+      "color": "#ffffff",
+      "radius": "pill",
+      "weight": "bold",
+      "font_size": "md",
+      "padding_horizontal": 28,
+      "padding_vertical": 12,
+      "shadow": "button",
+      "hover": "slightly darker gradient; lift with stronger shadow",
+      "alignment": "center block"
+    },
+    "feature_card": {
+      "style": "white card on warm background",
+      "icon_background": "#f7e6dc",
+      "icon_color": "#d5ab9a",
+      "title_size": "md",
+      "title_weight": "bold",
+      "body_size": "sm",
+      "body_color": "text_secondary",
+      "padding": 22,
+      "gap": 10
+    },
+    "selling_points": {
+      "container": {
+        "background": "#ffe7dc",
+        "border_radius": 20,
+        "padding": 28,
+        "shadow": "0 14px 36px rgba(0,0,0,0.05)"
+      },
+      "items": {
+        "alignment": "row centered, star icon on right (RTL)",
+        "text_size": "md",
+        "text_weight": "medium",
+        "background": "#ffffff",
+        "border_radius": 12,
+        "padding": 14,
+        "gap": 8
+      }
+    },
+    "payment_strip": {
+      "alignment": "center row",
+      "background": "transparent",
+      "icon_style": "brand marks on white",
+      "gap": 22,
+      "padding_top": 18
+    }
+  },
+  "principles": [
+    "Warm minimalism: lean layouts with soft colors and gentle shadows.",
+    "Hierarchy through weight, not size: few font sizes; rely on bold for emphasis.",
+    "Whitespace as a buffer: keep generous vertical spacing between sections and cards.",
+    "Rounded friendliness: pill buttons, rounded cards, circular radios.",
+    "Consistency in color temperature: stick to warm peaches/corals with muted browns for text.",
+    "Clarity for offers: show savings, old price, and free shipping in compact stacked lines.",
+    "Trust cues: payment brand strip anchored below CTAs, badges for recommendations.",
+    "Accessibility: maintain sufficient contrast for text on light backgrounds; ensure focus states on interactive elements."
+  ],
+  "usage_notes": {
+    "rtl_support": "Default flows are RTL; mirror spacing and alignment for LTR gracefully.",
+    "images": "Not present in capture; rely on typography, iconography, and negative space.",
+    "animation": "Keep subtle; micro-elevations on hover, gentle opacity fades for hover states."
+  }
+}
+
