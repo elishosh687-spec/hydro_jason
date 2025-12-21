@@ -12,7 +12,7 @@ export function WhyChooseUsSection() {
   const { heading, features } = activeContent.whyChooseUs;
 
   return (
-    <section className="bg-[#fff6f2] py-12 md:py-16 lg:py-20" dir="rtl">
+    <section className="bg-bg-page py-12 md:py-16 lg:py-20" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Top Decorative Wave */}
@@ -36,7 +36,7 @@ export function WhyChooseUsSection() {
           </div>
 
           {/* Main Title */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-[#52423d] mb-10 md:mb-14">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-text-primary mb-10 md:mb-14">
             {heading}
           </h2>
 
@@ -47,22 +47,22 @@ export function WhyChooseUsSection() {
               return (
                 <div
                   key={feature.id}
-                  className="bg-white rounded-2xl p-6 border border-[#f2e3dd] transition-all hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-6 border border-border-default transition-all hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1"
                 >
                   {/* Icon Circle */}
                   <div className="flex justify-center mb-5">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#fce9de] to-[#f7ddd0] flex items-center justify-center">
-                      <Icon className="w-8 h-8 md:w-10 md:h-10 text-[#e07a63]" strokeWidth={2} />
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-ui-tag to-ui-icon-bg flex items-center justify-center">
+                      <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary-main" strokeWidth={2} />
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg md:text-xl font-bold text-center text-[#52423d] mb-3">
+                  <h3 className="text-lg md:text-xl font-bold text-center text-text-primary mb-3">
                     {feature.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm md:text-base text-center text-[#7a6c66] leading-relaxed">
+                  <p className="text-sm md:text-base text-center text-text-secondary leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

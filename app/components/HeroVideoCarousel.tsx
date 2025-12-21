@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { activeContent } from '~/configs/content-active';
+import { landingMedia } from '~/configs/media-active';
 
 interface Slide {
   id: number;
@@ -13,10 +14,11 @@ export function HeroVideoCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const { slides: slidesData, ariaLabels, placeholders } = activeContent.heroVideoCarousel;
+  const mediaSlides = landingMedia.heroVideoCarousel.slides;
 
-  const slides: Slide[] = slidesData.map((slide) => ({
+  const slides: Slide[] = slidesData.map((slide, index) => ({
     ...slide,
-    src: undefined, // Placeholder - will show colored box
+    src: mediaSlides[index]?.src, // Use actual src from media config
   }));
 
   const nextSlide = () => {
@@ -43,7 +45,7 @@ export function HeroVideoCarousel() {
   }, [isPlaying, currentSlide]);
 
   return (
-    <section className="bg-[#fff6f2] py-8 md:py-12" dir="rtl">
+    <section className="bg-bg-page py-8 md:py-12" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-[1120px] mx-auto">
           {/* Carousel Container */}
@@ -71,7 +73,7 @@ export function HeroVideoCarousel() {
                       </video>
                     ) : (
                       // Video Placeholder
-                      <div className="w-full h-full bg-gradient-to-br from-[#de7e63] via-[#e79a7b] to-[#e9a481] flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-gradient-from via-gradient-via to-gradient-to flex items-center justify-center">
                         <div className="text-center text-white">
                           <Play className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 opacity-50" />
                           <p className="text-xl md:text-3xl font-bold">{placeholders.video}</p>
@@ -90,7 +92,7 @@ export function HeroVideoCarousel() {
                       />
                     ) : (
                       // Image Placeholder
-                      <div className="w-full h-full bg-gradient-to-br from-[#f2a085] to-[#e5b7a3] flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-primary-light to-primary-lighter flex items-center justify-center">
                         <div className="text-center text-white">
                           <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                             <span className="text-4xl md:text-6xl">🖼️</span>
@@ -113,7 +115,7 @@ export function HeroVideoCarousel() {
               className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95"
               aria-label={ariaLabels.previous}
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-[#52423d]" strokeWidth={2.5} />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-text-primary" strokeWidth={2.5} />
             </button>
 
             <button
@@ -121,13 +123,13 @@ export function HeroVideoCarousel() {
               className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95"
               aria-label={ariaLabels.next}
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-[#52423d]" strokeWidth={2.5} />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-text-primary" strokeWidth={2.5} />
             </button>
 
             {/* Play/Pause Button (Optional - for better UX) */}
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#52423d]/70 hover:bg-[#52423d]/90 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 opacity-0 hover:opacity-100"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-text-primary/70 hover:bg-text-primary/90 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 opacity-0 hover:opacity-100"
               aria-label={isPlaying ? ariaLabels.pause : ariaLabels.play}
             >
               {isPlaying ? (

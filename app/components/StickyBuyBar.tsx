@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { useCheckout } from '~/lib/useCheckout';
 import { useLoaderData } from '@remix-run/react';
 import { activeContent } from '~/configs/content-active';
+import { landingMedia } from '~/configs/media-active';
 
 export function StickyBuyBar() {
   const [visible, setVisible] = useState(false);
   const { goToCheckout, isSubmitting } = useCheckout();
   const { product } = useLoaderData<typeof import('~/routes/_index').loader>();
   const { productName, stockWarning, ctaButton, fallbackImageAlt } = activeContent.stickyBuyBar;
+  const { stickyBuyBar: barMedia } = landingMedia;
 
   useEffect(() => {
     const onScroll = () => {
@@ -44,14 +46,14 @@ export function StickyBuyBar() {
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-4" dir="rtl">
           <div className="flex items-center gap-3">
             <img
-              src={product?.images?.nodes?.[0]?.url || "https://placehold.co/100x100/fff6f2/52423d?text=FE"}
-              alt={product?.images?.nodes?.[0]?.altText || fallbackImageAlt}
-              className="w-12 h-12 rounded-full border border-[#f2e3dd] object-cover"
+              src={product?.images?.nodes?.[0]?.url || barMedia.productImage.src}
+              alt={product?.images?.nodes?.[0]?.altText || barMedia.productImage.alt}
+              className="w-12 h-12 rounded-full border border-border-default object-cover"
               loading="lazy"
             />
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-[#52423d]">{productName}</span>
-              <span className="text-xs text-[#e07a63]">{stockWarning}</span>
+              <span className="font-bold text-text-primary">{productName}</span>
+              <span className="text-xs text-primary-main">{stockWarning}</span>
             </div>
           </div>
 
@@ -59,7 +61,7 @@ export function StickyBuyBar() {
             type="button"
             onClick={handleClick}
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-[#de7e63] via-[#e79a7b] to-[#e9a481] text-white font-bold text-sm md:text-base px-6 py-2 rounded-full shadow-[0_6px_16px_rgba(224,122,99,0.35)] hover:shadow-[0_8px_20px_rgba(224,122,99,0.45)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to text-white font-bold text-sm md:text-base px-6 py-2 rounded-full shadow-[0_6px_16px_rgba(224,122,99,0.35)] hover:shadow-[0_8px_20px_rgba(224,122,99,0.45)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? ctaButton.submitting : ctaButton.default}
           </button>

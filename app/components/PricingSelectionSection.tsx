@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Check, Circle, Sparkles } from 'lucide-react';
 import { useFetcher } from '@remix-run/react';
 import { activeContent } from '~/configs/content-active';
+import { landingMedia } from '~/configs/media-active';
 
 interface PricingOption {
   id: string;
@@ -45,6 +46,7 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
   const fetcher = useFetcher<{ success: boolean; checkoutUrl?: string; error?: string }>();
   const fetcherData = fetcher.data;
+  const { pricing: pricingMedia } = landingMedia;
 
   // Log product data for debugging
   console.log('🛒 COMPONENT: Product prop:', product);
@@ -169,10 +171,10 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
   };
 
   return (
-    <section className="bg-[#fff6f2] py-12 md:py-16" dir="rtl">
+    <section className="bg-bg-page py-12 md:py-16" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#e07a63] mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-primary-main mb-8 md:mb-12">
             {heading}
           </h2>
 
@@ -187,13 +189,13 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
                   className={`
                     relative bg-white rounded-2xl p-5 cursor-pointer transition-all
                     ${isSelected 
-                      ? 'border-2 border-[#e5b7a3] shadow-[0_10px_30px_rgba(0,0,0,0.06)]' 
-                      : 'border border-[#f2e3dd]'
+                      ? 'border-2 border-border-selected shadow-[0_10px_30px_rgba(0,0,0,0.06)]' 
+                      : 'border border-border-default'
                     }
                   `}
                 >
                   {option.floatingBadge && (
-                    <div className="absolute -top-3 right-6 min-w-[112px] px-3 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-[#de7e63] via-[#e79a7b] to-[#e9a481] shadow-[0_6px_16px_rgba(224,122,99,0.35)] border border-[#e5b7a3] flex items-center justify-center gap-2">
+                    <div className="absolute -top-3 right-6 min-w-[112px] px-3 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to shadow-[0_6px_16px_rgba(224,122,99,0.35)] border border-border-selected flex items-center justify-center gap-2">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span className="leading-none">{option.floatingBadge}</span>
                     </div>
@@ -202,32 +204,32 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex flex-col items-start text-right flex-shrink-0">
                       <div className="flex items-baseline gap-1 mb-0.5">
-                        <span className="text-lg md:text-xl font-bold text-[#5c4b43] leading-none">
+                        <span className="text-lg md:text-xl font-bold text-text-price leading-none">
                           {option.price.toFixed(2)}
                         </span>
-                        <span className="text-sm md:text-base text-[#7a6c66]">₪</span>
+                        <span className="text-sm md:text-base text-text-secondary">₪</span>
                       </div>
 
                       {option.originalPrice && (
-                        <div className="text-sm text-[#b9a9a2] line-through mb-0.5">
+                        <div className="text-sm text-text-muted line-through mb-0.5">
                           ₪{option.originalPrice.toFixed(2)}
                         </div>
                       )}
 
                       {option.savings && (
-                        <div className="text-sm text-[#e07a63] font-medium mb-1">
+                        <div className="text-sm text-primary-main font-medium mb-1">
                           {savingsText} ₪{option.savings.toFixed(2)}
                         </div>
                       )}
 
-                      <div className="text-xs text-[#7a6c66]">
+                      <div className="text-xs text-text-secondary">
                         {option.shippingText}
                       </div>
                     </div>
 
                     {option.discountPercentage && (
                       <div className="flex-shrink-0">
-                        <div className="bg-[#e07a63] text-white rounded-full w-16 h-16 flex flex-col items-center justify-center shadow-sm">
+                        <div className="bg-primary-main text-white rounded-full w-16 h-16 flex flex-col items-center justify-center shadow-sm">
                           <span className="text-xs font-medium leading-tight">{savingsText}</span>
                           <span className="text-lg font-bold leading-tight">{option.discountPercentage}%</span>
                         </div>
@@ -237,14 +239,14 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
                     <div className="flex items-center gap-3 flex-shrink-0">
                       <div className="flex-shrink-0">
                         {isSelected ? (
-                          <div className="w-6 h-6 rounded-full bg-[#e07a63] flex items-center justify-center">
+                          <div className="w-6 h-6 rounded-full bg-primary-main flex items-center justify-center">
                             <Check className="w-4 h-4 text-white" strokeWidth={3} />
                           </div>
                         ) : (
-                          <Circle className="w-6 h-6 text-[#cdb9b1]" strokeWidth={2} />
+                          <Circle className="w-6 h-6 text-ui-radio-unchecked" strokeWidth={2} />
                         )}
                       </div>
-                      <span className="text-[#52423d] font-semibold text-lg">
+                      <span className="text-text-primary font-semibold text-lg">
                         {option.label}
                       </span>
                     </div>
@@ -258,7 +260,7 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
           <button
             type="button"
             onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-[#de7e63] via-[#e79a7b] to-[#e9a481] text-white font-bold text-base md:text-lg py-3.5 md:py-4 px-8 rounded-full shadow-[0_6px_16px_rgba(224,122,99,0.35)] hover:shadow-[0_8px_20px_rgba(224,122,99,0.45)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            className="w-full bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to text-white font-bold text-base md:text-lg py-3.5 md:py-4 px-8 rounded-full shadow-[0_6px_16px_rgba(224,122,99,0.35)] hover:shadow-[0_8px_20px_rgba(224,122,99,0.45)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
           >
             {fetcher.state === 'submitting' ? ctaButton.submitting : ctaButton.default}
           </button>
@@ -272,10 +274,10 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
 
           {/* Payment Logos */}
           <div className="mt-6 flex justify-center">
-            <div className="w-full max-w-xl rounded-2xl bg-white border border-[#f2e3dd] shadow-[0_10px_30px_rgba(0,0,0,0.06)] p-4 md:p-5 flex items-center justify-center min-h-[110px]">
+            <div className="w-full max-w-xl rounded-2xl bg-white border border-border-default shadow-[0_10px_30px_rgba(0,0,0,0.06)] p-4 md:p-5 flex items-center justify-center min-h-[110px]">
               <img
-                src="https://placehold.co/600x60/ffffff/52423d?text=Payment+Methods"
-                alt={paymentMethodsAlt}
+                src={pricingMedia.paymentMethods.src}
+                alt={pricingMedia.paymentMethods.alt}
                 className="w-full h-16 md:h-20 object-contain"
                 loading="lazy"
               />

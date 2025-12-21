@@ -21,15 +21,15 @@ export function BenefitsList() {
             dir="ltr"
           >
             <Icon 
-              className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#d5ab9a] flex-shrink-0" 
+              className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-ui-icon-color flex-shrink-0" 
               strokeWidth={2} 
             />
             {/* Mobile: Short Text */}
-            <span className="md:hidden text-xs font-medium text-[#52423d] whitespace-nowrap">
+            <span className="md:hidden text-xs font-medium text-text-primary whitespace-nowrap">
               {benefit.mobileText}
             </span>
             {/* Desktop: Full Text */}
-            <span className="hidden md:inline text-base lg:text-lg font-medium text-[#52423d] whitespace-nowrap">
+            <span className="hidden md:inline text-base lg:text-lg font-medium text-text-primary whitespace-nowrap">
               {benefit.text}
             </span>
           </div>

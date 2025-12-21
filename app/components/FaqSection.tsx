@@ -14,7 +14,7 @@ export function FaqSection() {
     <section className="bg-white py-12 md:py-16 lg:py-20" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#52423d] mb-8 text-right">{heading}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-8 text-right">{heading}</h2>
 
           <div className="divide-y divide-gray-200 border-t border-b border-gray-200">
             {items.map((item, index) => {
@@ -26,9 +26,9 @@ export function FaqSection() {
                     onClick={() => toggleIndex(index)}
                     className="w-full flex items-center justify-between py-4 text-right"
                   >
-                    <span className="font-semibold text-[#52423d]">{item.question}</span>
+                    <span className="font-semibold text-text-primary">{item.question}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-[#7a6c66] transition-transform ${
+                      className={`w-5 h-5 text-text-secondary transition-transform ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />

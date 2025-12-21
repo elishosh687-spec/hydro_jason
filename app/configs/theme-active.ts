@@ -5,6 +5,7 @@
  * 
  * Available Themes:
  * - v1-peach.ts - Warm peach/coral with muted browns (CURRENT)
+ * - v2-medical.ts - Professional medical theme
  * 
  * To create a new theme:
  * 1. Copy v1-peach.ts to a new file (e.g., v2-blue.ts)

@@ -5,6 +5,7 @@
  * 
  * Available Content Versions:
  * - v1-original.ts - Original "Comfort & Freedom" angle (CURRENT)
+ * - v2-safety.ts - Medical & Safety angle
  * 
  * To create a new content version:
  * 1. Copy v1-original.ts to a new file (e.g., v2-urgency.ts)

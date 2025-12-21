@@ -11,7 +11,7 @@ export function AnnouncementBar() {
   const items = activeContent.announcementBar.items;
 
   return (
-    <div className="bg-[#ddb3a5] py-2.5 animate-slide-down overflow-hidden" dir="rtl">
+    <div className="bg-ui-announcement py-2.5 animate-slide-down overflow-hidden" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-nowrap items-center justify-between gap-2 md:gap-6 lg:gap-8">
           {items.map((item, index) => {
