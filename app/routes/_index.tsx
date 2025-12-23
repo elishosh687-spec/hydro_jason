@@ -4,6 +4,7 @@ import { storefrontQuery } from '~/lib/shopify.server';
 import { Layout } from '~/components/Layout';
 import { HeroVideoCarousel } from '~/components/HeroVideoCarousel';
 import { Hero } from '~/components/Hero';
+import { ProductBenefits } from '~/components/ProductBenefits';
 import { BenefitsList } from '~/components/BenefitsList';
 import { WhyChooseUsSection } from '~/components/WhyChooseUsSection';
 import { PricingSelectionSection } from '~/components/PricingSelectionSection';
@@ -132,9 +133,10 @@ export default function Index() {
         <div className="pb-24 md:pb-28">
           <HeroVideoCarousel />
           <Hero />
-          <div className="container mx-auto px-4 py-8 md:py-12">
+          <ProductBenefits />
+          {/* <div className="container mx-auto px-4 py-8 md:py-12">
             <BenefitsList />
-          </div>
+          </div> */}
           <div id="pricing">
             <PricingSelectionSection product={product} />
           </div>

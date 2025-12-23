@@ -47,11 +47,11 @@ export function HeroVideoCarousel() {
   return (
     <section className="bg-bg-page py-8 md:py-12" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-[1120px] mx-auto">
+        <div className="max-w-[500px] sm:max-w-[600px] lg:max-w-[650px] mx-auto">
           {/* Carousel Container */}
-          <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+          <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.08)]">
             {/* Slides */}
-            <div className="relative aspect-[16/9] md:aspect-[21/9]">
+            <div className="relative aspect-square">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}

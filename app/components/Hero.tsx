@@ -11,7 +11,7 @@ export function Hero() {
   const { headline, subtitle, socialProofBadge, rating, benefits } = activeContent.hero;
 
   return (
-    <section className="bg-bg-page py-12 md:py-16 lg:py-20" dir="rtl">
+    <section className="bg-bg-page pt-px pb-px" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Main Headline */}

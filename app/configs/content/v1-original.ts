@@ -77,6 +77,28 @@ export const content = {
         alt: 'המוצר שלנו בפעולה',
       },
     ],
+    // תכונות מרכזיות - מוצגות בצד הקרוסלה
+    features: [
+      {
+        id: 'vegan',
+        // טקסט - 100% טבעוני
+        text: '100% vegan',
+        // אייקון (Lucide icon name)
+        icon: 'Leaf',
+      },
+      {
+        id: 'energy',
+        // טקסט - מטבוליזם אנרגטי
+        text: 'Energy\nMetabolism',
+        icon: 'Zap',
+      },
+      {
+        id: 'muscle',
+        // טקסט - תפקוד שרירים
+        text: 'Muscle\nFunction',
+        icon: 'Activity',
+      },
+    ],
     // תוויות נגישות לכפתורי הקרוסלה
     ariaLabels: {
       previous: 'הקודם',
