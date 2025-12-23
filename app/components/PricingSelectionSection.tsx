@@ -46,7 +46,6 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
   // Use Context to share selection across all components
   const { selectedVariantIndex: selectedIdx, setSelectedVariantIndex: setSelectedIdx } = useSelectedVariant();
   const fetcher = useFetcher<{ success: boolean; checkoutUrl?: string; error?: string }>();
-  const fetcherData = fetcher.data;
   const { pricing: pricingMedia } = landingMedia;
 
   // Log product data for debugging
@@ -138,10 +137,13 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
 
   // Handle redirect when checkout URL is received
   useEffect(() => {
-    if (fetcherData?.success && fetcherData.checkoutUrl) {
-      window.location.href = fetcherData.checkoutUrl;
+    if (fetcher.data?.success && fetcher.data.checkoutUrl) {
+      console.log('✅ Redirecting to checkout:', fetcher.data.checkoutUrl);
+      window.location.href = fetcher.data.checkoutUrl;
+    } else if (fetcher.data?.error) {
+      console.error('❌ Checkout error:', fetcher.data.error);
     }
-  }, [fetcherData]);
+  }, [fetcher.data]);
 
   const handleAddToCart = () => {
     console.log('🚀 ADD TO CART CLICKED IN PRICING SECTION!');
@@ -149,10 +151,16 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
     console.log('🚀 Merchandise ID:', merchandiseId);
     console.log('🚀 Selected Variant:', selectedVariant);
     console.log('📦 All Variants:', product?.variants?.nodes);
+    console.log('📦 Product:', product);
 
     if (!merchandiseId) {
       console.error('❌ NO MERCHANDISE ID! Cannot add to cart.');
       console.error('❌ Product data:', product);
+      console.error('❌ Selected Index:', selectedIdx);
+      console.error('❌ Product variants:', product?.variants?.nodes);
+      
+      // Show user-friendly error
+      alert('שגיאה: לא ניתן להוסיף לעגלה. אנא רענן את הדף או פנה לתמיכה.');
       return;
     }
 
@@ -269,9 +277,9 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
           </button>
 
           {/* Show any fetcher errors */}
-          {fetcherData?.error && (
+          {fetcher.data?.error && (
             <div className="mt-4 p-4 bg-red-100 border border-red-300 rounded-lg text-red-700 text-sm text-right" dir="rtl">
-              <strong>שגיאה:</strong> {fetcherData.error}
+              <strong>שגיאה:</strong> {fetcher.data.error}
             </div>
           )}
 

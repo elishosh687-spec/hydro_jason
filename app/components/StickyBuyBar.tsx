@@ -3,13 +3,11 @@ import { useCheckout } from '~/lib/useCheckout';
 import { useLoaderData } from '@remix-run/react';
 import { activeContent } from '~/configs/content-active';
 import { landingMedia } from '~/configs/media-active';
-import { useSelectedVariant } from '~/lib/SelectedVariantContext';
 
 export function StickyBuyBar() {
   const [visible, setVisible] = useState(false);
   const { goToCheckout, isSubmitting } = useCheckout();
   const { product } = useLoaderData<typeof import('~/routes/_index').loader>();
-  const { selectedVariantIndex } = useSelectedVariant();
   const { productName, stockWarning, ctaButton, fallbackImageAlt } = activeContent.stickyBuyBar;
   const { stickyBuyBar: barMedia } = landingMedia;
 
@@ -27,16 +25,15 @@ export function StickyBuyBar() {
   const handleClick = () => {
     console.log('🔘 StickyBuyBar clicked!');
     console.log('📦 Product:', product);
-    console.log('🎯 Selected Index:', selectedVariantIndex);
     console.log('🎯 All Variants:', product?.variants?.nodes);
     
-    // Use the selected variant from context (default is 0 = ₪199)
-    const selectedVariant = product?.variants?.nodes?.[selectedVariantIndex];
-    console.log('✅ Selected Variant:', selectedVariant);
+    // ALWAYS use variant 0 (₪199) for sticky bar - as per user requirement
+    const defaultVariant = product?.variants?.nodes?.[0];
+    console.log('✅ Using default variant (₪199):', defaultVariant);
     
-    if (selectedVariant?.id) {
-      console.log('🚀 Calling goToCheckout with:', selectedVariant.id);
-      goToCheckout(selectedVariant.id, 1);
+    if (defaultVariant?.id) {
+      console.log('🚀 Calling goToCheckout with variant 0 (₪199):', defaultVariant.id);
+      goToCheckout(defaultVariant.id, 1);
     } else {
       console.log('⚠️ No variant found, scrolling to pricing');
       // Fallback: scroll to pricing section

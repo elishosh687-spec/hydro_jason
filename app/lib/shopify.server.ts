@@ -61,10 +61,11 @@ export async function storefrontQuery<T = any>(
 
   if (result.errors) {
     console.error('❌ GraphQL Errors:', result.errors);
-    throw new Error(`GraphQL errors: ${JSON.stringify(result.errors)}`);
+    // Return errors instead of throwing, so the loader can handle them
+    return { data: result.data || null, errors: result.errors };
   }
 
   console.log('✅ Storefront API Success');
-  return result;
+  return { data: result.data, errors: undefined };
 }
 
