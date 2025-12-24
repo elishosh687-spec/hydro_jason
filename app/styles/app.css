@@ -8,6 +8,140 @@
   }
 }
 
+/* Image Carousel Blinking Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 
+      0 20px 60px rgba(224, 122, 99, 0.15),
+      0 10px 30px rgba(224, 122, 99, 0.1),
+      0 0 0 1px rgba(229, 183, 163, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 25px 70px rgba(224, 122, 99, 0.25),
+      0 15px 40px rgba(224, 122, 99, 0.2),
+      0 0 0 1px rgba(229, 183, 163, 0.4);
+  }
+}
+
+@keyframes glowOverlay {
+  0%, 100% {
+    opacity: 0.6;
+    background: radial-gradient(circle at center, rgba(224, 122, 99, 0.1) 0%, transparent 70%);
+  }
+  50% {
+    opacity: 1;
+    background: radial-gradient(circle at center, rgba(224, 122, 99, 0.15) 0%, transparent 70%);
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(224, 122, 99, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(224, 122, 99, 0.5);
+  }
+}
+
+@keyframes imageGlow {
+  0%, 100% {
+    box-shadow: 
+      0 15px 40px rgba(224, 122, 99, 0.2),
+      0 5px 15px rgba(224, 122, 99, 0.15),
+      0 0 0 1px rgba(242, 160, 133, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 20px 50px rgba(224, 122, 99, 0.3),
+      0 10px 25px rgba(224, 122, 99, 0.25),
+      0 0 0 1px rgba(242, 160, 133, 0.5);
+  }
+}
+
+@keyframes guaranteeBorderGlow {
+  0%, 100% {
+    box-shadow: 
+      0 10px 30px rgba(224, 122, 99, 0.15),
+      0 0 0 1px rgba(229, 183, 163, 0.3),
+      0 0 0 3px rgba(224, 122, 99, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 15px 40px rgba(224, 122, 99, 0.25),
+      0 0 0 1px rgba(229, 183, 163, 0.5),
+      0 0 0 3px rgba(224, 122, 99, 0.2);
+  }
+}
+
+@keyframes guaranteeIconPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(224, 122, 99, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(224, 122, 99, 0.4);
+  }
+}
+
+@keyframes premiumBadgeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 8px 24px rgba(224, 122, 99, 0.4),
+      0 4px 12px rgba(224, 122, 99, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 12px 32px rgba(224, 122, 99, 0.5),
+      0 6px 16px rgba(224, 122, 99, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes premiumShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+  }
+}
+
+@keyframes cleanBadgeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 4px 16px rgba(224, 122, 99, 0.25),
+      0 2px 8px rgba(224, 122, 99, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 6px 20px rgba(224, 122, 99, 0.3),
+      0 3px 10px rgba(224, 122, 99, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
+
 
 
 

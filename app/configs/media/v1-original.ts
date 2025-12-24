@@ -39,6 +39,24 @@ export const media = {
         // תמונה שנייה בקרוסלה
         src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/Gemini_Generated_Image_qpr44wqpr44wqpr4.png?v=1766316875',
       },
+      {
+        id: 3,
+        type: 'image' as const,
+        // תמונה שלישית - מבט מקרוב על המוצר
+        src: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=800&fit=crop&q=80',
+      },
+      {
+        id: 4,
+        type: 'image' as const,
+        // תמונה רביעית - תינוק רגוע
+        src: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=800&fit=crop&q=80',
+      },
+      {
+        id: 5,
+        type: 'image' as const,
+        // תמונה חמישית - שימוש יומיומי
+        src: 'https://images.unsplash.com/photo-1515488042361-ee00e0d4d8be?w=800&h=800&fit=crop&q=80',
+      },
     ],
   },
 
@@ -318,15 +336,15 @@ export const media = {
     // אווטרים של לקוחות מרוצים
     customerAvatars: [
       {
-        src: 'https://placehold.co/40x40/e5b7a3/ffffff?text=A',
+        src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&q=80',
         alt: 'לקוח מרוצה 1',
       },
       {
-        src: 'https://placehold.co/40x40/f2a085/ffffff?text=B',
+        src: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&fit=crop&q=80',
         alt: 'לקוח מרוצה 2',
       },
       {
-        src: 'https://placehold.co/40x40/de7e63/ffffff?text=C',
+        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&q=80',
         alt: 'לקוח מרוצה 3',
       },
     ],

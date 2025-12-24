@@ -66,15 +66,15 @@ export function ProblemSolutionSection({
               {painPoints.map((point) => (
                 <div
                   key={point.id}
-                  className="flex items-start gap-3 md:gap-4 text-right"
+                  className="flex items-center gap-3 md:gap-4 text-right"
                 >
-                  {/* X Icon on the right (RTL) */}
-                  <div className="flex-shrink-0 order-2">
+                  {/* X Icon on the left */}
+                  <div className="flex-shrink-0 order-1">
                     <X className="w-5 h-5 md:w-6 md:h-6 text-primary-main" strokeWidth={2.5} />
                   </div>
                   
                   {/* Text */}
-                  <p className="text-base md:text-lg text-text-primary leading-relaxed order-1 flex-1">
+                  <p className="text-base md:text-lg text-text-primary leading-relaxed order-2 flex-1">
                     {point.text}{' '}
                     <span className="text-primary-main font-semibold">{point.highlight}</span>
                     {point.textAfter && <> {point.textAfter}</>}
@@ -106,8 +106,8 @@ export function ProblemSolutionSection({
           <div className="mt-10 md:mt-14">
             <div className="flex justify-center">
               <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-                {/* Video Option - Story/Reels Format (9:16) */}
-                <div className="relative aspect-[9/16] bg-gradient-to-br from-primary-light to-primary-lighter">
+                {/* Video Option - Reduced height by 30% */}
+                <div className="relative bg-gradient-to-br from-primary-light to-primary-lighter" style={{ aspectRatio: '9/11.2' }}>
                   <div className="w-full h-full flex items-center justify-center">
                     <div className="text-center text-white px-6">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">

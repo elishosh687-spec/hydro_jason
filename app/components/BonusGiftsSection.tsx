@@ -25,7 +25,7 @@ export function BonusGiftsSection() {
   return (
     <section className="bg-bg-page py-6 md:py-8" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto my-5">
           {/* Gifts List - Simple */}
           <div className="space-y-3">
             {gifts.map((gift) => {

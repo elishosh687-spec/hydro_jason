@@ -1,5 +1,6 @@
 import { Star, Baby, Sparkles, RefreshCw, Hand, Gift, Package, Grip } from 'lucide-react';
 import { activeContent } from '~/configs/content-active';
+import { ImageCarousel, type ImageCarouselImage } from './ImageCarousel';
 
 const features = [
   {
@@ -28,8 +29,60 @@ export function ProductHeroSection() {
   const { rating, socialProofBadge } = activeContent.hero;
   const { productName } = activeContent.global;
 
+  // Gift images for carousel with titles and descriptions
+  const giftsImages: ImageCarouselImage[] = [
+    {
+      id: 'gift-1',
+      src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/Gemini_Generated_Image_qpr44wqpr44wqpr4.png?v=1766316875',
+      alt: 'מחזיק בקבוק לעגלה במתנה',
+      title: 'מחזיק בקבוק לעגלה',
+      width: 400,
+      height: 400,
+    },
+    {
+      id: 'gift-2',
+      src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/Gemini_Generated_Image_5l3r7p5l3r7p5l3r.png?v=1766316758',
+      alt: 'מחזיק מוצץ מעץ במתנה',
+      title: 'מחזיק מוצץ מעץ',
+      width: 400,
+      height: 400,
+    },
+    {
+      id: 'gift-3',
+      src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/Gemini_Generated_Image_64vnf364vnf364vn_1.png?v=1766319466',
+      alt: 'ידיות אוניברסליות לבקבוק במתנה',
+      title: 'ידיות אוניברסליות לבקבוק',
+      width: 400,
+      height: 400,
+    },
+    {
+      id: 'gift-4',
+      src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/unnamed_5.jpg?v=1766316631',
+      alt: 'מחזיק סיליקון לבקבוק במתנה',
+      title: 'מחזיק סיליקון לבקבוק',
+      width: 400,
+      height: 400,
+    },
+    {
+      id: 'gift-5',
+      src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/unnamed_10.jpg?v=1766316637',
+      alt: 'כיסוי בקבוק חם במתנה',
+      title: 'כיסוי בקבוק חם',
+      width: 400,
+      height: 400,
+    },
+    {
+      id: 'gift-6',
+      src: 'https://cdn.shopify.com/s/files/1/0710/4846/2518/files/1212.jpg?v=1764090881',
+      alt: 'מגש אוכל לתינוק במתנה',
+      title: 'מגש אוכל לתינוק',
+      width: 400,
+      height: 400,
+    },
+  ];
+
   return (
-    <section className="bg-bg-page py-8 md:py-12" dir="rtl">
+    <section className="bg-bg-page py-0" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Rating and Social Proof */}
@@ -122,76 +175,83 @@ export function ProductHeroSection() {
                 </p>
               </div>
 
-              {/* Gifts Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#f2e3dd] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-lighter to-primary-light flex items-center justify-center flex-shrink-0">
-                      <Package className="w-6 h-6 text-white" strokeWidth={2.5} />
-                    </div>
-                    <div>
-                      <p className="text-sm md:text-base font-semibold text-[#52423d] leading-tight">
-                        מחזיק בקבוק לעגלה
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#f2e3dd] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-lighter to-primary-light flex items-center justify-center flex-shrink-0">
-                      <Baby className="w-6 h-6 text-white" strokeWidth={2.5} />
-                    </div>
-                    <div>
-                      <p className="text-sm md:text-base font-semibold text-[#52423d] leading-tight">
-                        מחזיק מוצץ
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#f2e3dd] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-lighter to-primary-light flex items-center justify-center flex-shrink-0">
-                      <Grip className="w-6 h-6 text-white" strokeWidth={2.5} />
-                    </div>
-                    <div>
-                      <p className="text-sm md:text-base font-semibold text-[#52423d] leading-tight">
-                        ידיות אוניברסליות לבקבוק
-                      </p>
-                    </div>
-                  </div>
+              {/* Gifts Carousel */}
+              <div className="mb-6 flex justify-center">
+                <div className="w-full max-w-md">
+                  <ImageCarousel images={giftsImages} />
                 </div>
               </div>
 
-              {/* CTA Badge */}
+              {/* CTA Badge - Premium Design */}
               <div className="text-center">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#e07a63] via-[#e79a7b] to-[#e9a481] text-white px-6 py-3 rounded-full text-sm md:text-base font-bold shadow-[0_4px_12px_rgba(224,122,99,0.3)]">
-                  <Gift className="w-4 h-4 md:w-5 md:h-5" strokeWidth={2.5} />
-                  <span>במתנה!</span>
+                <div 
+                  className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#e07a63] via-[#e79a7b] to-[#e9a481] text-white px-8 py-4 rounded-full text-base md:text-lg font-bold relative overflow-hidden group transition-all duration-300 hover:scale-105"
+                  style={{
+                    animation: 'premiumBadgeGlow 3s ease-in-out infinite',
+                    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  {/* Animated shine effect - only on hover */}
+                  <div 
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%)',
+                      width: '200%',
+                      height: '200%',
+                      top: '-50%',
+                      left: '-50%',
+                    }}
+                  />
+                  
+                  {/* Static shine overlay */}
+                  <div 
+                    className="absolute inset-0 rounded-full opacity-30"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%)',
+                    }}
+                  />
+                  
+                  {/* Glow effect */}
+                  <div 
+                    className="absolute inset-0 rounded-full blur-xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-300"
+                    style={{
+                      background: 'radial-gradient(circle at center, rgba(224, 122, 99, 0.6) 0%, transparent 70%)',
+                    }}
+                  />
+                  
+                  {/* Content */}
+                  <div className="relative z-10 flex items-center gap-2.5">
+                    <Gift 
+                      className="w-5 h-5 md:w-6 md:h-6 drop-shadow-sm group-hover:scale-110 transition-transform duration-300" 
+                      strokeWidth={2.5}
+                      style={{
+                        filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))',
+                      }}
+                    />
+                    <span className="tracking-wide font-extrabold">במתנה!</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Limited Time Promotion */}
+          {/* Limited Time Promotion - Premium Clean Design */}
           <div className="text-center mb-6 md:mb-8">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-main to-primary-light text-white px-4 py-2 rounded-full text-sm md:text-base font-bold">
-              <span>24 שעות אחרונות למבצע!</span>
-              <span>|</span>
-              <span>עד 50% הנחה</span>
+            <div 
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-main via-primary-light to-primary-main text-white px-6 py-3 md:px-8 md:py-3.5 rounded-full text-sm md:text-base font-bold relative overflow-hidden group transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                animation: 'cleanBadgeGlow 4s ease-in-out infinite',
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.2), 0 0 8px rgba(255, 255, 255, 0.3)',
+                letterSpacing: '0.03em',
+              }}
+            >
+              {/* Content - Emphasized */}
+              <span className="relative z-10 tracking-wide font-extrabold drop-shadow-lg">המתנות עד גמר המלאי</span>
             </div>
           </div>
 
-          {/* Free Guide */}
-          <div className="bg-white rounded-2xl p-4 md:p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)] border border-border-default text-center">
-            <p className="text-base md:text-lg text-text-primary">
-              כל הזמנה מגיעה עם הספר שלנו - המדריך להורות קלה: מתינוק ועד פעוט. במתנה! (שווי 119.90 ₪)
-            </p>
-          </div>
         </div>
       </div>
     </section>
   );
 }
-

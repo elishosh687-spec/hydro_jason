@@ -8,19 +8,15 @@ import { Hero } from '~/components/Hero';
 import { ProductBenefits } from '~/components/ProductBenefits';
 import { BonusGiftsSection } from '~/components/BonusGiftsSection';
 import { BenefitsList } from '~/components/BenefitsList';
-import { WhyChooseUsSection } from '~/components/WhyChooseUsSection';
 import { PricingSelectionSection } from '~/components/PricingSelectionSection';
-import { PaymentAndTestimonialSection } from '~/components/PaymentAndTestimonialSection';
 import { ProblemSolutionSection } from '~/components/ProblemSolutionSection';
 import { AntiColicBenefitsSection } from '~/components/AntiColicBenefitsSection';
 import { BenefitsGridSection } from '~/components/BenefitsGridSection';
 import { SuitabilityCheckSection } from '~/components/SuitabilityCheckSection';
 import { SocialProof } from '~/components/SocialProof';
-import { HowItWorksSection } from '~/components/HowItWorksSection';
 import { FounderStorySection } from '~/components/FounderStorySection';
 import { BonusProductsSection } from '~/components/BonusProductsSection';
 import { IndependenceVideoSection } from '~/components/IndependenceVideoSection';
-import { GuaranteeSection } from '~/components/GuaranteeSection';
 import { FaqSection } from '~/components/FaqSection';
 import { FinalCtaSection } from '~/components/FinalCtaSection';
 import { Footer } from '~/components/Footer';
@@ -141,20 +137,16 @@ export default function Index() {
           <div id="pricing">
             <PricingSelectionSection product={product} />
           </div>
-          <WhyChooseUsSection />
-          <PaymentAndTestimonialSection />
           <ProblemSolutionSection />
           <AntiColicBenefitsSection />
           <SuitabilityCheckSection />
           <BenefitsGridSection />
+          <IndependenceVideoSection />
           <SocialProof />
-          <HowItWorksSection />
           <FounderStorySection />
           <BonusProductsSection />
-          <IndependenceVideoSection />
-          <GuaranteeSection />
-          <FaqSection />
           <FinalCtaSection />
+          <FaqSection />
           <Footer />
         </div>
         <StickyBuyBar />

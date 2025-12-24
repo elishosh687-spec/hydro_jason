@@ -3,6 +3,7 @@ import { useLoaderData } from '@remix-run/react';
 import { activeContent } from '~/configs/content-active';
 import { landingMedia } from '~/configs/media-active';
 import { useSelectedVariant } from '~/lib/SelectedVariantContext';
+import { Truck, Gift, ShieldCheck } from 'lucide-react';
 
 export function IndependenceVideoSection() {
   const { goToCheckout, isSubmitting } = useCheckout();
@@ -10,6 +11,7 @@ export function IndependenceVideoSection() {
   const { selectedVariantIndex } = useSelectedVariant();
   const { heading, videoAlt, videoPlaceholder, ctaButton, paymentMethodsAlt, paymentIconsPlaceholder, avatarAlt, socialProofText } = activeContent.independenceVideo;
   const { independenceVideo: videoMedia } = landingMedia;
+  const { heading: guaranteeHeading, subheading: guaranteeSubheading, bodyText: guaranteeBodyText } = activeContent.guarantee;
 
   const handleCheckout = () => {
     // Use the selected variant from context (default is 0 = ₪199)
@@ -35,6 +37,48 @@ export function IndependenceVideoSection() {
               loading="lazy"
             />
           </div>
+        </div>
+
+        {/* Guarantee Section */}
+        <div 
+          className="w-full max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 flex flex-col items-center text-center gap-4 relative"
+          style={{
+            animation: 'guaranteeBorderGlow 4s ease-in-out infinite',
+            boxShadow: '0 10px 30px rgba(224, 122, 99, 0.15), 0 0 0 2px rgba(229, 183, 163, 0.4), 0 0 0 4px rgba(224, 122, 99, 0.1)',
+            border: '2px solid transparent',
+            background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, rgba(224, 122, 99, 0.4), rgba(242, 160, 133, 0.3), rgba(229, 183, 163, 0.4)) border-box',
+          }}
+        >
+          {/* Glow effect overlay */}
+          <div 
+            className="absolute inset-0 rounded-3xl pointer-events-none opacity-30"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(224, 122, 99, 0.2) 0%, transparent 70%)',
+            }}
+          />
+          
+          <div 
+            className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-main to-primary-light flex items-center justify-center text-white relative z-10"
+            style={{
+              animation: 'guaranteeIconPulse 3s ease-in-out infinite',
+            }}
+          >
+            <ShieldCheck className="w-7 h-7" strokeWidth={2.5} />
+          </div>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-text-primary relative z-10">
+            {guaranteeHeading}
+          </h3>
+
+          <p className="text-base md:text-lg font-medium text-text-secondary relative z-10">
+            {guaranteeSubheading}
+          </p>
+
+          <div className="w-12 h-0.5 bg-primary-light rounded-full relative z-10" />
+
+          <p className="text-sm md:text-base leading-relaxed text-text-primary max-w-2xl relative z-10">
+            {guaranteeBodyText}
+          </p>
         </div>
 
         <button
@@ -69,6 +113,17 @@ export function IndependenceVideoSection() {
             <p className="text-xs md:text-sm text-text-secondary">
               {socialProofText}
             </p>
+            
+            {/* Free Shipping Badge */}
+            <div className="flex items-center gap-2 mt-3 px-4 py-2.5 bg-gradient-to-r from-primary-lighter/20 to-primary-light/20 rounded-full border border-primary-lighter shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <Truck className="w-4 h-4 text-primary-main flex-shrink-0" strokeWidth={2.5} />
+                <span className="text-xs md:text-sm font-bold text-primary-main">
+                  משלוח עד הבית חינם
+                </span>
+              </div>
+              <span className="text-[10px] md:text-xs text-text-secondary font-medium">(עד גמר המלאי)</span>
+            </div>
           </div>
         </div>
       </div>

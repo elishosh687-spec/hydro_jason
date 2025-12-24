@@ -21,7 +21,15 @@ export default {
       return await handleRequest(request);
     } catch (error) {
       console.error('Server error:', error);
-      return new Response('An unexpected error occurred', {status: 500});
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      // Return JSON error response instead of plain text
+      return new Response(
+        JSON.stringify({ error: errorMessage }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
   },
 };

@@ -13,6 +13,7 @@ interface Slide {
 export function HeroVideoCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [hoveredSlideIndex, setHoveredSlideIndex] = useState<number | null>(null);
   const { slides: slidesData, ariaLabels, placeholders } = activeContent.heroVideoCarousel;
   const mediaSlides = landingMedia.heroVideoCarousel.slides;
 
@@ -46,19 +47,42 @@ export function HeroVideoCarousel() {
 
   return (
     <section className="bg-bg-page py-0" dir="rtl">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-[500px] sm:max-w-[600px] lg:max-w-[650px] mx-auto">
+      <div className="container mx-auto px-4 md:px-8 py-5">
+        <div className="max-w-[500px] sm:max-w-[600px] lg:max-w-[650px] mx-auto" style={{ perspective: '1200px' }}>
           {/* Carousel Container */}
           <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.08)]">
             {/* Slides */}
-            <div className="relative aspect-square">
-              {slides.map((slide, index) => (
-                <div
-                  key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
+            <div className="relative aspect-square" style={{ perspective: '1000px' }}>
+              {slides.map((slide, index) => {
+                const isActive = index === currentSlide;
+                const isHovered = hoveredSlideIndex === index && isActive;
+                
+                // Calculate rotation - only for active slide
+                const rotateY = isActive ? (isHovered ? 3 : 0) : 0;
+                
+                // Calculate shadow based on rotation
+                const shadowIntensity = Math.abs(rotateY) * 0.015;
+                const boxShadow = isActive
+                  ? `0 ${8 + shadowIntensity * 15}px ${25 + shadowIntensity * 25}px rgba(0, 0, 0, ${0.1 + shadowIntensity}), 0 0 0 1px rgba(224, 122, 99, ${0.05 + shadowIntensity * 0.1})`
+                  : 'none';
+                
+                return (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-all duration-500 ${
+                      isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                    onMouseEnter={() => isActive && setHoveredSlideIndex(index)}
+                    onMouseLeave={() => setHoveredSlideIndex(null)}
+                    onTouchStart={() => isActive && setHoveredSlideIndex(index)}
+                    onTouchEnd={() => setHoveredSlideIndex(null)}
+                    style={{
+                      transform: isActive ? `rotateY(${rotateY}deg)` : 'none',
+                      transformStyle: 'preserve-3d',
+                      backfaceVisibility: 'hidden',
+                      boxShadow,
+                    }}
+                  >
                   {slide.type === 'video' ? (
                     slide.src ? (
                       <video
@@ -105,8 +129,9 @@ export function HeroVideoCarousel() {
                       </div>
                     )
                   )}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Navigation Arrows */}

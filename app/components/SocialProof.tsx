@@ -8,11 +8,7 @@ export function SocialProof() {
     <section className="bg-bg-page py-12 md:py-16 lg:py-20" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-6xl mx-auto mb-6 md:mb-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-border-default shadow-[0_10px_30px_rgba(0,0,0,0.05)] text-sm md:text-base text-text-primary">
-            <CheckCircle2 className="w-4.5 h-4.5 text-ui-success" strokeWidth={2.4} />
-            <span className="font-semibold">{badge}</span>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-text-primary mt-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-text-primary">
             {heading}
           </h2>
           <p className="text-base md:text-lg text-text-secondary mt-2 max-w-3xl mx-auto">
@@ -28,11 +24,18 @@ export function SocialProof() {
             >
               <header className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3 flex-1">
-                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary-lighter to-primary-light flex items-center justify-center text-white font-bold shadow-sm">
-                    {review.initials ? (
-                      <span className="text-base md:text-lg">{review.initials}</span>
+                  <div className="h-12 w-12 rounded-full overflow-hidden bg-gradient-to-br from-primary-lighter to-primary-light flex items-center justify-center shadow-sm flex-shrink-0">
+                    {review.image ? (
+                      <img
+                        src={review.image}
+                        alt={review.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : review.initials ? (
+                      <span className="text-base md:text-lg text-white font-bold">{review.initials}</span>
                     ) : (
-                      <User className="w-6 h-6" />
+                      <User className="w-6 h-6 text-white" />
                     )}
                   </div>
                   <div className="flex flex-col text-right leading-tight">
