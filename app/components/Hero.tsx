@@ -21,31 +21,6 @@ export function Hero() {
             <span className="text-text-primary">{headline.part3}</span>
           </h1>
 
-          {/* Subtitle Paragraph */}
-          <p className="text-base md:text-lg text-text-secondary text-center mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4">
-            {subtitle}
-          </p>
-
-          {/* Social Proof Badge */}
-          <div className="flex justify-center mb-4">
-            <div className="bg-primary-light text-white px-6 py-2.5 rounded-full font-medium text-sm md:text-base shadow-sm">
-              {socialProofBadge}
-            </div>
-          </div>
-
-          {/* Star Rating */}
-          <div className="flex items-center justify-center gap-1 mb-12 md:mb-16">
-            <span className="text-text-primary font-semibold ml-2 text-lg">
-              ({rating})
-            </span>
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-5 h-5 md:w-6 md:h-6 fill-ui-star text-ui-star"
-              />
-            ))}
-          </div>
-
         </div>
       </div>
     </section>

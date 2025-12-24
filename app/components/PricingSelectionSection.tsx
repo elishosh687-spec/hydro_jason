@@ -185,7 +185,7 @@ export function PricingSelectionSection({ product }: PricingSelectionSectionProp
     <section className="bg-bg-page py-12 md:py-16" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-primary-main mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-text-primary mb-8 md:mb-12">
             {heading}
           </h2>
 

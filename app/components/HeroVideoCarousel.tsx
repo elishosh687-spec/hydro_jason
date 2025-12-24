@@ -45,7 +45,7 @@ export function HeroVideoCarousel() {
   }, [isPlaying, currentSlide]);
 
   return (
-    <section className="bg-bg-page py-8 md:py-12" dir="rtl">
+    <section className="bg-bg-page py-0" dir="rtl">
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-[500px] sm:max-w-[600px] lg:max-w-[650px] mx-auto">
           {/* Carousel Container */}

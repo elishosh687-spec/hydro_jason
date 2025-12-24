@@ -5,7 +5,7 @@ import { activeContent } from '~/configs/content-active';
 import { landingMedia } from '~/configs/media-active';
 
 export function StickyBuyBar() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const { goToCheckout, isSubmitting } = useCheckout();
   const { product } = useLoaderData<typeof import('~/routes/_index').loader>();
   const { productName, stockWarning, ctaButton, fallbackImageAlt } = activeContent.stickyBuyBar;
@@ -14,10 +14,12 @@ export function StickyBuyBar() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY || window.pageYOffset;
-      setVisible(y > 300);
+      // Show bar after scrolling 50px (very low threshold)
+      setVisible(y > 50);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    // Check immediately on mount
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -46,7 +48,7 @@ export function StickyBuyBar() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 ${
+      className={`fixed bottom-0 left-0 right-0 z-[100] transition-transform duration-300 ${
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
