@@ -37,19 +37,19 @@ export const media = {
         id: 2,
         type: 'image' as const,
         // תמונה שנייה בקרוסלה
-        src: 'https://cdn.shopify.com/s/files/1/0661/6416/2608/files/Gemini_Generated_Image_qpr44wqpr44wqpr4.png?v=1766316875',
+        src: 'https://cdn.shopify.com/s/files/1/0710/4846/2518/files/4_9cc9a0c2-de10-41ea-916e-cc50e627b15d.png?v=1766835592',
       },
       {
         id: 3,
         type: 'image' as const,
         // תמונה שלישית - מבט מקרוב על המוצר
-        src: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=800&fit=crop&q=80',
+        src: 'https://cdn.shopify.com/s/files/1/0710/4846/2518/files/Gemini_Generated_Image_cdykbwcdykbwcdyk.png?v=1766835484',
       },
       {
         id: 4,
         type: 'image' as const,
         // תמונה רביעית - תינוק רגוע
-        src: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=800&fit=crop&q=80',
+        src: 'https://cdn.shopify.com/s/files/1/0710/4846/2518/files/4_9cc9a0c2-de10-41ea-916e-cc50e627b15d.png?v=1766835592',
       },
       {
         id: 5,
